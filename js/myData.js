@@ -37,8 +37,6 @@ const months = ["January", "February", "March", "April", "May", "June", "July", 
 const verified = {};
 
 function Person(firstName, lastName, department, age, gender) {
-	firstName = firstName.toLowerCase();
-	lastName = lastName.toLowerCase();
 	this.firstName = firstName;
 	this.lastName = lastName;
 	this.age = age;
@@ -49,7 +47,7 @@ function Person(firstName, lastName, department, age, gender) {
 		"english",
 		"data processing"];
 	this.info = {
-		firstname: this.firstName,
+		firstname: this.firstName.toLowerCase(),
 		lastname: this.lastName,
 		fullname: this.fullName(),
 		department: this.department,
@@ -197,7 +195,7 @@ function updateStudent(firstname, key, value) {
 	if (e == false) {
 		for (let i = 0; i < length; i++) {
 			if (verified[i]["firstname"] == firstname.toLowerCase()) {
-				verified[i][key.toLowerCase()] = value;
+				verified[i][key.toLowerCase()] = value.toLowerCase();
 				return "Successful!"
 			}
 		}

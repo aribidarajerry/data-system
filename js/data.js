@@ -26,6 +26,7 @@ $(document).ready(function() {
 		event.preventDefault()
 		r = registerStudent(firstname.val().trim(), lastname.val().trim(), department.val().trim(), age.val(), gender)
 		//$("#form-1 p").show().html(r)
+		alert(verifiedStudents())
 		$(".form").show()
 		firstname.val("");
 		lastname.val("");
