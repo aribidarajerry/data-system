@@ -36,14 +36,14 @@ const months = ["January", "February", "March", "April", "May", "June", "July", 
 // Database to host all studrents data
 const verified = {};
 
-function Person(firstName, lastName, age, gender) {
+function Person(firstName, lastName, department, age, gender) {
 	firstName = firstName.toLowerCase();
 	lastName = lastName.toLowerCase();
 	this.firstName = firstName;
 	this.lastName = lastName;
 	this.age = age;
 	this.gender = gender;
-	this.department = null;
+	this.department = department;
 	// Default subjects for all students
 	this.subjects = ["mathematics",
 		"english",
@@ -52,9 +52,9 @@ function Person(firstName, lastName, age, gender) {
 		firstname: this.firstName,
 		lastname: this.lastName,
 		fullname: this.fullName(),
+		department: this.setDepartment(this.department),
 		age: this.age,
 		gender: this.gender,
-		department: this.department,
 		subjects: sortArr(this.subjects)
 	};
 }
@@ -153,10 +153,11 @@ Person.prototype.getData = function(data = false) {
 */
 // if this line is inside the registerStudent, it will not work because the i++ will not update it inside the loop but start from 0 again
 let i = 0;
-function registerStudent(firstname, lastname, age, gender) {
+function registerStudent(firstname, lastname, department, age, gender) {
 	const person = {
 		firstname: firstname.toLowerCase(),
 		lastname: lastname.toLowerCase(),
+		department: department.toLowerCase(),
 		age: age,
 		gender: gender.toLowerCase()
 	}
@@ -178,7 +179,7 @@ function registerStudent(firstname, lastname, age, gender) {
 		verified[i] = person;
 		alert("Successful!")
 	}
-	const user = new Person(firstname, lastname, age, gender);
+	const user = new Person(firstname, lastname, department, age, gender);
 	i++;
 	return user;
 }
@@ -236,9 +237,10 @@ function studentData(studentName) {
 		if (verified[o]["firstname"] == studentName.toLowerCase()) {
 			let firstname = verified[o]["firstname"];
 			let lastname = verified[o]["lastname"];
+			let department = verified[o]["department"];
 			let age = verified[o]["age"];
 			let gender = verified[o]["gender"];
-			const verifiedStudent = new Person(firstname, lastname, age, gender);
+			const verifiedStudent = new Person(firstname, lastname, department, age, gender);
 			return verifiedStudent;
 			break;
 		} else if (verified[o] == "null") {

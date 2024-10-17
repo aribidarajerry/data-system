@@ -6,6 +6,7 @@ $(document).ready(function() {
 
 	let firstname = $("#firstname");
 	let lastname = $("#lastname");
+	let department = $("#department");
 	let age = $("#age");
 	let gender = null;
 	let male = $("#male");
@@ -23,11 +24,12 @@ $(document).ready(function() {
 	let r;
 	form1.submit(function(event) {
 		event.preventDefault()
-		r = registerStudent(firstname.val().trim(), lastname.val().trim(), age.val(), gender)
+		r = registerStudent(firstname.val().trim(), lastname.val().trim(), department.val().trim(), age.val(), gender)
 		//$("#form-1 p").show().html(r)
 		$(".form").show()
 		firstname.val("");
 		lastname.val("");
+		department.val("");
 		age.val("");
 		gender = null;
 		male.prop('checked', '')
@@ -37,16 +39,12 @@ $(document).ready(function() {
 	let form2 = $("#form-2");
 	let form2Name = $("#form-2 #firstname");
 	let form2Data = $("#form-2 #data");
-	let form2Department = $("#form-2 #department")
 	form2.submit(function(event) {
 		event.preventDefault()
 		let student = studentData(form2Name.val().trim())
-		if (form2Department.val()) {
-			student.setDepartment(form2Department.val().trim())
-		}
 		let data = student.getData(form2Data.val().trim())
 		$("#form-2 p").show().html(data)
-		form2Name.val(""); form2Data.val(""); form2Department.val();
+		form2Name.val(""); form2Data.val("");
 	})
 
 	let form3 = $("#form-3");
