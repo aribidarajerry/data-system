@@ -52,10 +52,10 @@ function Person(firstName, lastName, department, age, gender) {
 		firstname: this.firstName,
 		lastname: this.lastName,
 		fullname: this.fullName(),
-		department: this.setDepartment(this.department),
+		department: this.department,
 		age: this.age,
 		gender: this.gender,
-		subjects: sortArr(this.subjects)
+		subjects: this.departmentSubjects()
 	};
 }
 
@@ -64,23 +64,19 @@ Person.prototype.fullName = function() {
 	return this.lastName + " " + this.firstName;
 }
 
-Person.prototype.setDepartment = function(department) {
-	if (department.toLowerCase() == "arts") {
-		this.info.department = department;
+Person.prototype.departmentSubjects = function() {
+	if (this.department.toLowerCase() == "arts") {
 		const subjects = ["literature",
 			"government",
 			"agriculture",
 			"crs"];
-		this.info.subjects = subjects.concat(this.subjects);
-		this.info.subjects = sortArr(this.info.subjects);
-	} else if (department.toLowerCase() == "science") {
-		this.info.department = department;
+		return this.subjects.concat(subjects)
+	} else if (this.department.toLowerCase() == "science") {
 		const subjects = ["biology",
 			"chemistry",
 			"physics",
 			"technical drawing"];
-		this.info.subjects = subjects.concat(this.subjects);
-		this.info.subjects = sortArr(this.info.subjects);
+		return this.subjects.concat(subjects)
 	} else {
 		return "Invalid department!";
 	}
