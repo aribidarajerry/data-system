@@ -54,6 +54,7 @@ function Person(firstName, lastName, age, gender) {
 		fullname: this.fullName(),
 		age: this.age,
 		gender: this.gender,
+		department: this.department,
 		subjects: sortArr(this.subjects)
 	};
 }
@@ -200,6 +201,7 @@ function updateStudent(firstname, key, value) {
 		for (let i = 0; i < length; i++) {
 			if (verified[i]["firstname"] == firstname.toLowerCase()) {
 				verified[i][key.toLowerCase()] = value;
+				return "Successful!"
 			}
 		}
 	} else if (x == true) {

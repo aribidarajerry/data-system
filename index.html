@@ -20,6 +20,7 @@
 			box-sizing: border-box;
 			scroll-behavior: smooth;
 			text-transform: uppercase;
+			font-family: Monospace;
 		}
 		td {
 			padding: 0.5rem;
@@ -89,6 +90,7 @@
 				<h1>Enrol New Student</h1>
 				<label for="firstname">Firstname</label>
 				<input type="text" name="firstname" id="firstname" placeholder="Firstname" required />
+				<p></p>
 				<label for="lastname">Lastname</label>
 				<input type="text" name="lastname" id="lastname" placeholder="Lastname" required />
 				<label for="age">Age</label>
@@ -105,21 +107,40 @@
 		<section class="form" id="form-2">
 			<form action="#" method="post" accept-charset="utf-8">
 				<h1>Get Student's Data</h1>
-				<input type="text" name="student" id="student" placeholder="Student firstname" required />
+				<input type="text" name="firstname" id="firstname" placeholder="Student firstname" required />
 				<input type="text" name="data" id="data" placeholder="Student data" />
+				<input type="text" name="department" id="department" placeholder="Set department" />
 				<p></p>
 				<input type="submit" name="submit" value="Data" />
 			</form>
 		</section>
+		<section class="form" id="form-3">
+			<form action="#" method="post" accept-charset="utf-8">
+				<h1>Update Student's Data</h1>
+				<input type="text" name="firstname" id="firstname" placeholder="Student firstname" required />
+				<input type="text" name="data" id="data" placeholder="Student data" required />
+				<input type="text" name="update" id="update" placeholder="New update" required />
+				<p></p>
+				<input type="submit" name="submit" value="Update" />
+			</form>
+		</section>
+		<section class="form" id="form-4">
+			<form action="#" method="post" accept-charset="utf-8">
+				<h1>Delete Student's Data</h1>
+				<input type="text" name="firstname" id="firstname" placeholder="Student firstname" required />
+				<p></p>
+				<input type="submit" name="submit" value="Delete" />
+			</form>
+		</section>
 	</div>
 	<!--
-	<table id="my">
-		<tr>
-			<td>Firstname</td>
-			<td>Lastname</td>
-			<td>Age</td>
-			<td>Gender</td>
-		</tr>
-	</table>-->
+				<table id="my">
+					<tr>
+						<td>Firstname</td>
+						<td>Lastname</td>
+						<td>Age</td>
+						<td>Gender</td>
+					</tr>
+				</table>-->
 </body>
 </html>
