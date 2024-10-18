@@ -45,7 +45,8 @@ function Person(firstName, lastName, department, age, gender) {
 	// Default subjects for all students
 	this.subjects = ["mathematics",
 		"english",
-		"data processing"];
+		"data processing",
+		"civic", "biology"];
 	this.info = {
 		firstname: this.firstName.toLowerCase(),
 		lastname: this.lastName,
@@ -53,7 +54,7 @@ function Person(firstName, lastName, department, age, gender) {
 		department: this.department,
 		age: this.age,
 		gender: this.gender,
-		subjects: this.departmentSubjects()
+		subjects: sortArr(this.departmentSubjects())
 	};
 }
 
@@ -70,10 +71,10 @@ Person.prototype.departmentSubjects = function() {
 			"crs"];
 		return this.subjects.concat(subjects)
 	} else if (this.department.toLowerCase() == "science") {
-		const subjects = ["biology",
-			"chemistry",
+		const subjects = ["chemistry",
 			"physics",
-			"technical drawing"];
+			"technical drawing",
+			"geography"];
 		return this.subjects.concat(subjects)
 	} else {
 		return "Invalid department!";
