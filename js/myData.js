@@ -4,6 +4,14 @@
 
 
 /*
+
+Note that this file is not longer needed and has been replaced with classData.js
+
+*/
+
+
+
+/*
     Creating a program to store student's data:
 
     1. Name, age, gender and subjects ✔️
