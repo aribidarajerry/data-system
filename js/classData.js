@@ -35,11 +35,11 @@ const months = ["January", "February", "March", "April", "May", "June", "July", 
 // Class for each student
 class Student {
 	constructor(firstname, lastname, age, department, gender) {
-		this.firstname = firstname;
-		this.lastname = lastname;
+		this.firstname = firstname.toLowerCase();
+		this.lastname = lastname.toLowerCase();
 		this.age = age;
-		this.department = department;
-		this.gender = gender;
+		this.department = department.toLowerCase();
+		this.gender = gender.toLowerCase();
 		// Default subjects for all students
 		this.subjects = ["mathematics",
 			"english",
@@ -78,6 +78,7 @@ class Student {
 	}
 
 	addSubject(subject) {
+		subject = subject.toLowerCase();
 		let exist = itemExist(this.subjects, subject);
 		if (exist == true) {
 			return `<span class="alert alert-danger">${subject} already exist!</span>`
@@ -88,6 +89,7 @@ class Student {
 	}
 
 	removeSubject(subject) {
+		subject = subject.toLowerCase();
 		let exist = itemExist(this.subjects, subject);
 		if (exist == true && this.subjects.length == 7) {
 			return `<span class="alert alert-danger">Minimum no. of courses reached!</span>`
@@ -100,11 +102,14 @@ class Student {
 	}
 
 	updateStudent(data, value) {
+		data = data.toLowerCase();
+		value = value.toLowerCase();
 		let update = this[data] ? this[data] = value: `<span class="alert alert-danger">${data} does not exist!</span>`;
 		return update = update == value ? `<span class="alert alert-success">${this.firstname} ${data} now updated to ${value}</span>`: `<span class="alert alert-danger">${data} does not exist!</span>`;
 	}
 
 	listData(data = null) {
+		data = data.toLowerCase()
 		let lst = this[data] ? `${this.firstname} ${data}: ${this[data]}`: `Fullname: ${this.fullname()}<br>Age: ${this.age}<br>Department: ${this.department}<br>Gender: ${this.gender}`
 		return lst
 	}
@@ -119,9 +124,9 @@ class Students {
 	}
 
 	registerStudent(firstname, lastname, age, department, gender) {
-		let verify = this.students.find(student => student.firstname == firstname)
+		let verify = this.students.find(student => student.firstname == firstname.toLowerCase())
 		if (!verify) {
-			const student = new Student(firstname, lastname, age, department, gender)
+			const student = new Student(firstname.toLowerCase(), lastname, age, department, gender)
 			student.setDepartment()
 			this.students.push(student)
 			return "<span class='alert alert-success'>Successfully enrolled new student!</span>"
@@ -131,13 +136,13 @@ class Students {
 	}
 
 	studentData(firstname) {
-		let student = this.students.find(student => student.firstname == firstname)
+		let student = this.students.find(student => student.firstname == firstname.toLowerCase())
 		let info = student ? student: `<span class='alert alert-danger'>${firstname} does not exist!</span>`
 		return info
 	}
 
 	update(firstname, data, value) {
-		let student = this.students.find(student => student.firstname == firstname)
+		let student = this.students.find(student => student.firstname == firstname.toLowerCase())
 		student = student ? student.updateStudent(data, value): `<span class='alert alert-danger'>${firstname} does not exist!</span>`
 		return student
 	}
@@ -162,7 +167,7 @@ class Students {
 	}
 
 	deleteStudent(firstname) {
-		let del = this.students.find(student => student.firstname == firstname)
+		let del = this.students.find(student => student.firstname == firstname.toLowerCase())
 		if (del) {
 			this.students.splice(this.students.indexOf(del), 1)
 			return `<span class='alert alert-success'>${firstname} deleted successfully!</span>`
