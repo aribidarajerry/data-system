@@ -46,7 +46,7 @@ $(document).ready(function() {
 			let data = student.listData(form2Data.val().trim())
 			$("#form-2 p").show().html(data)
 		} else {
-			$("#form-2 p").show().html(`${form2Name.val().trim()} does not exist`)
+			$("#form-2 p").show().html(`<span class="alert alert-danger">${form2Name.val().trim()} does not exist</span>`)
 		}
 		form2Name.val(""); form2Data.val("");
 	})

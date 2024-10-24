@@ -73,35 +73,35 @@ class Student {
 			this.subjects = subjects.concat(this.subjects);
 			sortArr(this.subjects);
 		} else {
-			return "Invalid department!";
+			return "<span class='alert alert-danger'>Invalid department!</span>";
 		}
 	}
 
 	addSubject(subject) {
 		let exist = itemExist(this.subjects, subject);
 		if (exist == true) {
-			return subject + " already exist.";
+			return `<span class="alert alert-danger">${subject} already exist!</span>`
 		} else {
 			this.subjects.push(subject);
-			return subject + " was successfully added!";
+			return `<span class="alert alert-success">${subject} was successfully added!</span>`
 		}
 	}
 
 	removeSubject(subject) {
 		let exist = itemExist(this.subjects, subject);
 		if (exist == true && this.subjects.length == 7) {
-			return `Minimum no. of courses reached!`
+			return `<span class="alert alert-danger">Minimum no. of courses reached!</span>`
 		} else if (exist == true && this.subjects.length > 7) {
 			this.subjects.splice(this.subjects.indexOf(subject), 1);
-			return subject + " was successfully removed!";
+			return `<span class="alert alert-success">${subject} was successfully removed!</span>`
 		} else {
-			return subject + " does not exist.";
+			return `<span class="alert alert-danger">${subject} does not exist!</span>`
 		}
 	}
 
 	updateStudent(data, value) {
-		let update = this[data] ? this[data] = value: `${data} does not exist!`;
-		return update = update == value ? `${this.firstname} ${data} now updated to ${value}`: `${data} does not exist!`;
+		let update = this[data] ? this[data] = value: `<span class="alert alert-danger">${data} does not exist!</span>`;
+		return update = update == value ? `<span class="alert alert-success">${this.firstname} ${data} now updated to ${value}</span>`: `<span class="alert alert-danger">${data} does not exist!</span>`;
 	}
 
 	listData(data = null) {
@@ -124,21 +124,21 @@ class Students {
 			const student = new Student(firstname, lastname, age, department, gender)
 			student.setDepartment()
 			this.students.push(student)
-			return "Done"
+			return "<span class='alert alert-success'>Successfully enrolled new student!</span>"
 		} else {
-			return `${firstname} already exist!`
+			return `<span class='alert alert-danger'>${firstname} already exist!</span>`
 		}
 	}
 
 	studentData(firstname) {
 		let student = this.students.find(student => student.firstname == firstname)
-		let info = student ? student: `${firstname} does not exist!`
+		let info = student ? student: `<span class='alert alert-danger'>${firstname} does not exist!</span>`
 		return info
 	}
 
 	update(firstname, data, value) {
 		let student = this.students.find(student => student.firstname == firstname)
-		student = student ? student.updateStudent(data, value): `${firstname} does not exist!`
+		student = student ? student.updateStudent(data, value): `<span class='alert alert-danger'>${firstname} does not exist!</span>`
 		return student
 	}
 
@@ -165,9 +165,9 @@ class Students {
 		let del = this.students.find(student => student.firstname == firstname)
 		if (del) {
 			this.students.splice(this.students.indexOf(del), 1)
-			return `${firstname} deleted successfully!`
+			return `<span class='alert alert-success'>${firstname} deleted successfully!</span>`
 		} else {
-			return `${firstname} does not exist!`;
+			return `<span class='alert alert-danger'>${firstname} does not exist!</span>`
 		}
 	}
 
