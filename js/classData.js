@@ -107,11 +107,20 @@ class Student {
 		let update = this[data] ? this[data] = value: `<span class="alert alert-danger">${data} does not exist!</span>`;
 		return update = update == value ? `<span class="alert alert-success">${this.firstname} ${data} now updated to ${value}</span>`: `<span class="alert alert-danger">${data} does not exist!</span>`;
 	}
-
+	/*
 	listData(data = null) {
 		data = data.toLowerCase()
 		let lst = this[data] ? `${this.firstname} ${data}: ${this[data]}`: `Fullname: ${this.fullname()}<br>Age: ${this.age}<br>Department: ${this.department}<br>Gender: ${this.gender}`
 		return lst
+	}*/
+	listData(data = null) {
+		data = data.toLowerCase();
+		if (data == "fullname") {
+			return this.fullname();
+		} else {
+			let lst = this[data] ? `${this.firstname} ${data}: ${this[data]}`: `Fullname: ${this.fullname()}<br>Age: ${this.age}<br>Department: ${this.department}<br>Gender: ${this.gender}`
+			return lst
+		}
 	}
 }
 // End Student Methods
@@ -142,9 +151,16 @@ class Students {
 	}
 
 	update(firstname, data, value) {
+		data = data.toLowerCase();
+		if (data == "subjects") {
+			return `<span class='alert alert-danger'>${data} can only be added to or removed!</span>`;
+		} else if (data == "fullname") {
+			return `<span class='alert alert-danger'>Update firstname or lastname to change fullname!</span>`;
+		} else {
 		let student = this.students.find(student => student.firstname == firstname.toLowerCase())
 		student = student ? student.updateStudent(data, value): `<span class='alert alert-danger'>${firstname} does not exist!</span>`
-		return student
+		return student;
+		}
 	}
 
 	displayStudents() {
